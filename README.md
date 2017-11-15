@@ -1,5 +1,5 @@
 # dnn-step-by-step
-some samples of book 'deep learning step by step with python'
+code examples of book 'deep learning step by step with python'
 
 ## Python Environment setup
 
@@ -12,3 +12,9 @@ you can use miniconda or anaconda, for windows, please refer to [https://conda.i
 [https://conda.io/docs/user-guide/getting-started.html#managing-environments](https://conda.io/docs/user-guide/getting-started.html#managing-environments)
 
 (The python used in the book is 2.7)
+
+`conda create --name dnn python=2.7`
+
+`activate.ps1 dnn`
+
+`pip isntall ....`
