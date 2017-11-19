@@ -18,3 +18,12 @@ you can use miniconda or anaconda, for windows, please refer to [https://conda.i
 `activate.ps1 dnn`
 
 `pip isntall ....`
+
+
+#### Install the following libs for `scikit-neuralnetwork` on windows 10, if errors happen when using `sknn.mlp`
+
+If you are conda to manage python:
+
+`conda install m2w64-toolchain` # gc++
+`conda install mkl-service`
+`conda install libpython`  # https://github.com/Theano/Theano/issues/2867
