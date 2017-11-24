@@ -27,21 +27,23 @@ x_train , x_test , y_train , y_test = train_test_split(x, y, test_size = 0.2)
 #print y_train
 #print y_test
 
+
+### Use ReLU othera than sigmoid
 from sknn.mlp import Regressor, Layer
-fit1 = Regressor(layers=[
-    Layer("Sigmoid", units=6),
-    Layer("Sigmoid", units=14),
+fit2 = Regressor(layers=[
+    Layer("Rectifier", units=6),
+    Layer("Rectifier", units=14),
     Layer("Linear")],
     learning_rate=0.02,
     random_state=2016,
     n_iter=10)
 
 print "fitting model right now"
-fit1.fit(x_train,y_train)
+fit2.fit(x_train,y_train)
 
 
-pred1_train = fit1.predict(x_train)
+pred2_train = fit2.predict(x_train)
 from sklearn.metrics import mean_squared_error
-mse_1 = mean_squared_error(pred1_train, y_train)
+mse_2 = mean_squared_error(pred2_train, y_train)
 
-print "Train ERROR = ", mse_1 
+print "Train ERROR = ", mse_2 

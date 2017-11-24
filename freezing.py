@@ -27,21 +27,33 @@ x_train , x_test , y_train , y_test = train_test_split(x, y, test_size = 0.2)
 #print y_train
 #print y_test
 
+### Use Regularization
+
 from sknn.mlp import Regressor, Layer
-fit1 = Regressor(layers=[
-    Layer("Sigmoid", units=6),
-    Layer("Sigmoid", units=14),
+fit4 = Regressor(layers=[
+    Layer("Rectifier", units=6, frozen = True),
+    Layer("Rectifier", units=14, frozen = True),
     Layer("Linear")],
     learning_rate=0.02,
+    regularize = "L2",
     random_state=2016,
-    n_iter=10)
+    weight_decay =0.001,
+    n_iter=100)
 
 print "fitting model right now"
-fit1.fit(x_train,y_train)
+fit4.fit(x_train,y_train)
 
 
-pred1_train = fit1.predict(x_train)
+pred4_train = fit4.predict(x_train)
 from sklearn.metrics import mean_squared_error
-mse_1 = mean_squared_error(pred1_train, y_train)
+mse_4 = mean_squared_error(pred4_train, y_train)
 
-print "Train ERROR = ", mse_1 
+print "Train ERROR = ", mse_4 
+
+
+#save to pickle
+import pickle
+pickle.dump(fit4, open('Boston_fit4.pkl', 'wb'))
+
+#Load from pickle
+model = pickle.load(open('Boston_fit4.pkl', 'rb'))
